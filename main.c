@@ -47,6 +47,7 @@ int main() {
     printf("Let's Play Hand Match\n");
     printf("Game Started\n");
     printf("Remember Always...\n");
+   
     printf("r for Rock\n");
     printf("p for Paper\n");
     printf("s for Scissor\n\n");
@@ -58,22 +59,31 @@ int main() {
         char userChoice;
         scanf(" %c", &userChoice);  // Read a character (note the space before %c)
 
-        char computerChoice = getMyOpenion();
-
-        if (userChoice != computerChoice) {
-            bool isMe = Play(userChoice, computerChoice);
-            if (isMe) {
-                printf("Computer wins this round!\n");
-                me = me + 1;
+        if(userChoice == 's' || userChoice == 'p'|| userChoice == 'r'){
+            char computerChoice = getMyOpenion();
+            if (userChoice != computerChoice) {
+                bool isMe = Play(userChoice, computerChoice);
+                if (isMe) {
+                    printf("Computer wins this round!\n");
+                    me = me + 1;
+                } else {
+                    printf("You win this round!\n");
+                    opponent = opponent + 1;
+                }
             } else {
-                printf("You win this round!\n");
-                opponent = opponent + 1;
+                printf("It's a tie! Try again...\n");
             }
-        } else {
-            printf("It's a tie! Try again...\n");
-        }
 
-        printf("You: %d scores |||| Computer: %d scores\n\n", opponent, me);
+            printf("You: %d scores |||| Computer: %d scores\n\n", opponent, me);
+        }
+        else
+        {
+            printf("please schoose valid options!\n");
+            printf("Valid Options,\n\n");
+            printf("r for Rock\n");
+            printf("p for Paper\n");
+            printf("s for Scissor\n\n");
+        }
     }
 
     printf("Game Over!\n");
